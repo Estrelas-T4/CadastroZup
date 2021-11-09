@@ -2,11 +2,13 @@ package br.com.zup.Cadastros.cadastro;
 
 import br.com.zup.Cadastros.cadastro.dtos.CadastroDTO;
 import br.com.zup.Cadastros.cadastro.dtos.ResumoCadastroDTO;
+import org.hibernate.validator.constraints.br.CPF;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +38,12 @@ public class CadastroController {
             cadastroDTOS.add(resumoCadastroDTO);
         }
         return cadastroDTOS;
+    }
+
+    @DeleteMapping("/{cpf}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarCadastro(@PathVariable String cpf){
+        cadastroService.deletarCadastro(cpf);
     }
     /*
     check todo  1 - crie um metodo para cadastrar uma pessoa.
