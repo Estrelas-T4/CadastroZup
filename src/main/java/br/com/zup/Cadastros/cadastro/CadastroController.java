@@ -47,6 +47,8 @@ public class CadastroController {
     }
 
     @GetMapping("/{cpf}")
+    // CUIDADO: USAR A MODEL DIRETAMENTE NO RETORNO É POSSIVEL, PORÉM SE UM DIA ELA FOR ALTERADA COM UM DADO SENSIVEL VC
+    // TERÀ PROBELMAS DE FALHA DE SEGURANÇA POIS SERÁ EXIBIDO OS DADOS INTEIROS DA MODEL
     public Cadastro exibirCadastroPorId(@PathVariable String cpf){
         return cadastroService.pesquisarCadastroPorID(cpf);
     }

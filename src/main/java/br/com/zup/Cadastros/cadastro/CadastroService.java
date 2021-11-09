@@ -24,6 +24,7 @@ public class CadastroService {
     }
 
     public List<Cadastro> exibirtodosOsCadastros(Boolean moraSozinho, Integer idade, Boolean temPet){
+        // DA PARA RESOLVER UTILIZANDO AS PORTAS AND E OR NA PESQUISA COM BANCO DE DADOS.
         if (moraSozinho != null){
             return cadastroRepository.findAllByMoraSozinho(moraSozinho);
         }else if(idade != null){
