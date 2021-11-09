@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CadastroService {
@@ -43,4 +44,14 @@ public class CadastroService {
 
     }
 
+    public Cadastro pesquisarCadastroPorID(String cpf){
+        Optional<Cadastro> cadastroOptional = cadastroRepository.findById(cpf);
+
+        if (cadastroOptional.isPresent()){
+            return cadastroOptional.get();
+        }
+
+        throw new CadastroNaoExisteException();
+
+    }
 }
